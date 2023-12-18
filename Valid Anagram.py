@@ -9,3 +9,14 @@ def isAnagram(s, t):
     else:
         return False
 
+def arrayStringsAreEqual(word1, word2):
+    """
+    :type word1: List[str]
+    :type word2: List[str]
+    :rtype: bool
+    """
+
+    if "".join(word1) == "".join(word2):
+        return True
+    else:
+        return False
