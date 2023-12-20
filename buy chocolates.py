@@ -1,4 +1,4 @@
-def buyChoco(self, prices, money):
+def buyChoco(prices, money):
     """
     :type prices: List[int]
     :type money: int
