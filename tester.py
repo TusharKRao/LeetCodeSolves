@@ -1,5 +1,6 @@
-def howSum (s, nums):
-
+def howSum (s, nums, memo = {}):
+    if s in memo:
+        return s
     if s == 0:
         return []
     if s < 0:
@@ -7,12 +8,11 @@ def howSum (s, nums):
 
     for num in nums:
         rem = s - num
-        remres = howSum(rem, nums)
+        remres = howSum(rem, nums, memo)
         if remres is not None:
             remres += [num]
+            memo[rem] = remres
             return remres
-
-
     return None
 
-print(howSum(300,[2, 3, 5]))
+print(howSum(1000,[2, 3, 5]))
