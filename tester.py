@@ -1,24 +1,18 @@
-def canSum (s, nums, memo={}):
-    if s in memo:
-        return memo[s]
+def howSum (s, nums):
 
     if s == 0:
-        memo[s] = True
-        return True
-
+        return []
     if s < 0:
-        memo[s] = False
-        return False
+        return None
 
     for num in nums:
         rem = s - num
-        if canSum(rem, nums):
-            memo[s] = True
-            return True
-
-    memo[s] = False
-    return False
+        remres = howSum(rem, nums)
+        if remres is not None:
+            remres += [num]
+            return remres
 
 
+    return None
 
-print(canSum(8,[2, 3, 5]))
+print(howSum(300,[2, 3, 5]))
