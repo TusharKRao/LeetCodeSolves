@@ -15,4 +15,20 @@ def howSum (s, nums, memo = {}):
             return remres
     return None
 
-print(howSum(1000,[2, 3, 5]))
+print(howSum(7,[5, 3, 4, 7]))
+
+
+def hs(s, nums):
+
+    t = [None] * (s+1)
+    t[0] = []
+
+    for i in range(0, s):
+        if t[i] is not None:
+            for num in nums:
+                if i + num <= s:
+                    t[i + num] = t[i] + [num]
+
+    return t[s]
+
+print(hs(7,[5, 3, 4, 7]))

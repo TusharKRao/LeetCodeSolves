@@ -1,37 +1,34 @@
-def canSum (s, nums, memo={}):
+def howSum (s, nums, memo = {}):
     if s in memo:
-        return memo[s]
-
+        return s
     if s == 0:
-        memo[s] = True
-        return True
-
+        return []
     if s < 0:
-        memo[s] = False
-        return False
+        return None
 
     for num in nums:
         rem = s - num
-        if canSum(rem, nums):
-            memo[s] = True
-            return True
+        remres = howSum(rem, nums, memo)
+        if remres is not None:
+            remres += [num]
+            memo[rem] = remres
+            return remres
+    return None
 
-    memo[s] = False
-    return False
+print(howSum(7,[5, 3, 4, 7]))
 
 
+def hs(s, nums):
 
-print(canSum(300,[7, 14]))
+    t = [None] * (s+1)
+    t[0] = []
 
-def cs(sum, nums):
-    t = [False] * (sum+1)
-    t[0] = True
-
-    for i in range(0, sum):
-        if t[i] is True:
+    for i in range(0, s):
+        if t[i] is not None:
             for num in nums:
-                if num + i < sum:
-                    t[num+i] = True
-    print(t[sum])
+                if i + num <= s:
+                    t[i + num] = t[i] + [num]
 
-cs(300, [7,14])
+    return t[s]
+
+print(hs(7,[5, 3, 4, 7]))
