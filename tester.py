@@ -1,37 +1,37 @@
-def gridTravel (m, n, memo={}):
-    key = (m, n)
-    if key in memo:
-        return memo[key]
-    if m == 0 or n == 0:
-        memo[key] = 0
-        return 0
-    if m == 1 and n == 1:
-        memo[key] = 1
-        return 1
-    memo[key] = gridTravel(m-1, n, memo) + gridTravel(m, n-1, memo)
-    return memo[key]
+def canSum (s, nums, memo={}):
+    if s in memo:
+        return memo[s]
 
-print(gridTravel(18,18))
+    if s == 0:
+        memo[s] = True
+        return True
+
+    if s < 0:
+        memo[s] = False
+        return False
+
+    for num in nums:
+        rem = s - num
+        if canSum(rem, nums):
+            memo[s] = True
+            return True
+
+    memo[s] = False
+    return False
 
 
-def gd(m, n):
-    t = [[0] * (n+1) for j in range(m+1)]
-    for i in range(0, m+1):
-        for j in range(0, n+1):
-            if i == 0 or j == 0:
-                t[i][j] = 0
-    t[1][1] = 1
-    #initialization complete
 
-    for i in range(0, m+1):
+print(canSum(300,[7, 14]))
 
-        for j in range(0, n+1):
+def cs(sum, nums):
+    t = [False] * (sum+1)
+    t[0] = True
 
-            if i+1 <= m:
-                t[i+1][j] += t[i][j]
-            if j+1 <= n:
-                t[i][j+1] += t[i][j]
+    for i in range(0, sum):
+        if t[i] is True:
+            for num in nums:
+                if num + i < sum:
+                    t[num+i] = True
+    print(t[sum])
 
-    print(t[m][n])
-
-gd(18,18)
+cs(300, [7,14])

@@ -21,4 +21,17 @@ def canSum (s, nums, memo={}):
 
 
 
-print(canSum(8,[2, 3, 5]))
+print(canSum(300,[7, 14]))
+
+def cs(sum, nums):
+    t = [False] * (sum+1)
+    t[0] = True
+
+    for i in range(0, sum):
+        if t[i] is True:
+            for num in nums:
+                if num + i < sum:
+                    t[num+i] = True
+    print(t[sum])
+
+cs(300, [7,14])
