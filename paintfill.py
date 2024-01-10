@@ -1,3 +1,4 @@
+
 from collections import deque
 
 def min_fills(picture):
