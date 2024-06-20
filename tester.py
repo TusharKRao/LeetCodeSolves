@@ -1,6 +1,7 @@
-strong = "this is a demo string where im trying the slice application"
-x= strong[::2]
-x2 =strong[1::2]
-print(strong)
-print(x)
-print(x2)
+a = 7
+b = 5
+
+a = a^b
+b = a^b
+a = a^b
+print(a, b) 
