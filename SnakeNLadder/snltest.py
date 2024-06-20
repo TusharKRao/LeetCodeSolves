@@ -28,3 +28,4 @@ class TestGameComponents(unittest.TestCase):
         self.assertTrue(r2 in range(1, 7))
 
     # test the game whether it started or not by checking game status
+
